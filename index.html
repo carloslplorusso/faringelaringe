@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Interactiva: Faringe y Laringe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                        },
+                        accent: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .quiz-option:hover { background-color: #1e293b; border-color: #38bdf8; }
+        .quiz-option.selected { background-color: #0c4a6e; border-color: #38bdf8; }
+        .quiz-option.correct { background-color: #064e3b; border-color: #10b981; }
+        .quiz-option.incorrect { background-color: #7f1d1d; border-color: #ef4444; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <aside class="w-full md:w-72 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 flex flex-col flex-shrink-0">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-tooth text-accent-500"></i> Anatomía CMF
+            </h1>
+            <p class="text-xs text-slate-400 mt-2 font-medium">Dr. | Cirugía Bucomaxilofacial</p>
+            <p class="text-sm text-slate-300 mt-1">Faringe y Laringe Avanzada</p>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <button onclick="switchTab('teoria')" id="btn-teoria" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-accent-600 text-white transition-colors text-left font-medium shadow-md shadow-accent-600/20">
+                <i class="fa-solid fa-book-medical w-5 text-center"></i> Clase Teórica
+            </button>
+            <button onclick="switchTab('evaluacion')" id="btn-evaluacion" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-700 hover:text-white transition-colors text-left font-medium">
+                <i class="fa-solid fa-gamepad w-5 text-center"></i> Autoevaluación
+            </button>
+        </nav>
+        <div class="p-4 border-t border-slate-700 text-xs text-slate-500 flex items-center gap-2">
+            <i class="fa-solid fa-cloud"></i>
+            <span>Estado DB: <span id="auth-status" class="text-yellow-400 font-semibold">Iniciando...</span></span>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto h-screen">
+        
+        <section id="teoria" class="tab-content active max-w-5xl mx-auto pb-12">
+            <header class="mb-8">
+                <h2 class="text-4xl font-extrabold text-white mb-3">Anatomía Estructural y Topográfica: Faringe y Laringe</h2>
+                <p class="text-lg text-slate-400">Revisión exhaustiva de la morfología, musculatura, inervación, fascias y consideraciones quirúrgicas avanzadas para la especialidad Bucomaxilofacial.</p>
+            </header>
+
+            <!-- Card: Faringe -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-8 shadow-xl">
+                <div class="bg-slate-850 px-6 py-5 border-b border-slate-700 flex items-center gap-3">
+                    <i class="fa-solid fa-lungs text-accent-400 text-2xl"></i>
+                    <h3 class="text-2xl font-bold text-white">1. Anatomía Detallada de la Faringe</h3>
+                </div>
+                <div class="p-6 md:p-8 space-y-6">
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        La faringe es un conducto musculofascial, infundibuliforme (forma de embudo), impar y simétrico, que actúa como una encrucijada vital entre el tracto respiratorio y el tracto digestivo. Se localiza anterior a la columna vertebral cervical (separada de esta por el espacio retrofaríngeo), posterior a las cavidades nasales, la cavidad bucal y la laringe. Tiene una longitud promedio de 14 cm en el hombre y 13 cm en la mujer. Se extiende verticalmente desde la apófisis basilar del hueso occipital (base del cráneo) hasta el borde inferior del cartílago cricoides, a nivel de la sexta vértebra cervical (C6), donde se continúa con el esófago cervical.
+                    </p>
+                    
+                    <div class="bg-slate-900 p-5 rounded-lg border border-slate-700">
+                        <h4 class="font-bold text-white mb-2 text-lg text-accent-400">Estructura de la Pared Faríngea</h4>
+                        <p class="text-slate-300 mb-3">Desde la luz del órgano hacia el exterior, la pared faríngea está constituida por cuatro capas concéntricas:</p>
+                        <ol class="list-decimal list-inside space-y-2 text-slate-300 ml-2">
+                            <li><strong>Mucosa:</strong> Varía según la región (respiratoria en nasofaringe, escamosa estratificada en oro e hipofaringe).</li>
+                            <li><strong>Fascia Faringobasilar (Aponeurosis intrafaríngea):</strong> Capa fibrosa resistente, particularmente gruesa en su porción superior, donde ancla la faringe a la base del cráneo (tubérculo faríngeo del occipital y porción petrosa del temporal).</li>
+                            <li><strong>Capa Muscular:</strong> Formada por los músculos constrictores y elevadores.</li>
+                            <li><strong>Fascia Bucofaríngea:</strong> Capa de tejido conectivo laxo externo que recubre los músculos constrictores y permite el deslizamiento de la faringe sobre las estructuras adyacentes, formando el límite anterior del espacio retrofaríngeo.</li>
+                        </ol>
+                    </div>
+
+                    <div class="my-8 flex justify-center bg-slate-900 rounded-lg p-6 border border-slate-700">
+                        <span class="text-slate-500 italic"></span>
+                    </div>
+
+                    <h4 class="text-xl text-accent-400 font-bold mb-4 border-b border-slate-700 pb-2">Subdivisiones Topográficas Exhaustivas</h4>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-slate-850 p-5 rounded-lg border border-slate-700/50">
+                            <h5 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-wind text-accent-500"></i> Rinofaringe (Nasofaringe, Cavum Faringeo o Epifaringe)
+                            </h5>
+                            <p class="text-slate-300 mb-3">Es la porción superior, estrictamente respiratoria. Su pared anterior está abierta hacia las fosas nasales a través de las <strong>coanas</strong>.</p>
+                            <ul class="list-disc list-outside ml-6 space-y-2 text-slate-300">
+                                <li><strong>Límites:</strong> Bóveda faríngea (techo), velo del paladar o paladar blando (piso, el cual se eleva durante la deglución para aislarla), coanas (anterior), C1 y C2 (posterior).</li>
+                                <li><strong>Techo y Pared Posterior:</strong> Alberga la <em>amígdala faríngea (adenoides)</em>, cuya hipertrofia en la infancia causa respiración bucal crónica, alterando el desarrollo maxilofacial (facies adenoidea).</li>
+                                <li><strong>Paredes Laterales:</strong> Contienen el orificio faríngeo de la trompa de Eustaquio (faringotimpánica), rodeado superior y posteriormente por una elevación cartilaginosa llamada <em>rodete tubárico (torus tubarius)</em>. Posterior a este rodete, existe una profunda depresión llamada <strong>Fosita de Rosenmüller (Receso Faríngeo)</strong>, de suma importancia clínica ya que es el sitio de origen más frecuente del carcinoma nasofaríngeo.</li>
+                                <li><strong>Epitelio:</strong> <em>Cilíndrico ciliado pseudoestratificado</em> con abundantes células caliciformes.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-850 p-5 rounded-lg border border-slate-700/50">
+                            <h5 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-utensils text-accent-500"></i> Orofaringe (Bucofaringe o Mesofaringe)
+                            </h5>
+                            <p class="text-slate-300 mb-3">Porción intermedia y compartida por los aparatos digestivo y respiratorio (encrucijada aerodigestiva).</p>
+                            <ul class="list-disc list-outside ml-6 space-y-2 text-slate-300">
+                                <li><strong>Límites:</strong> Superiormente por el velo del paladar, inferiormente por un plano horizontal imaginario que pasa por el borde superior de la epiglotis, y anteriormente se comunica con la cavidad bucal propiamente dicha a través del <em>Istmo de las Fauces</em>.</li>
+                                <li><strong>El Istmo de las Fauces y Paredes Laterales:</strong> Delimitado por dos pliegues musculomucosos: el arco palatogloso (pilar anterior, que contiene el músculo palatogloso) y el arco palatofaríngeo (pilar posterior, que contiene el músculo palatofaríngeo). La fosa amigdalina (tonsilar) se encuentra entre ambos pilares y aloja a la <strong>amígdala palatina</strong>.</li>
+                                <li><strong>Pared Posterior:</strong> Descansa sobre el nivel de los cuerpos vertebrales C2 y C3. Rica en folículos linfoides dispersos.</li>
+                                <li><strong>Base de la lengua:</strong> Contiene la amígdala lingual. Entre la base de la lengua y la cara anterior de la epiglotis se forman las <em>valéculas epiglóticas</em>, separadas por el pliegue glosoepiglótico medio.</li>
+                                <li><strong>Epitelio:</strong> Sometida a abrasión mecánica por el bolo alimenticio, está revestida por <em>epitelio plano estratificado no queratinizado</em>.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-850 p-5 rounded-lg border border-slate-700/50">
+                            <h5 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-water text-accent-500"></i> Laringofaringe (Hipofaringe)
+                            </h5>
+                            <p class="text-slate-300 mb-3">Porción inferior y más estrecha, situada posterior e inferiormente a la laringe. Conduce el bolo alimenticio hacia el esófago, evadiendo la vía aérea.</p>
+                            <ul class="list-disc list-outside ml-6 space-y-2 text-slate-300">
+                                <li><strong>Límites:</strong> Desde el borde superior de la epiglotis y los pliegues faringoepiglóticos, hasta el borde inferior del cartílago cricoides (C6).</li>
+                                <li><strong>Estructuras clave:</strong> La pared anterior está formada por la entrada a la laringe (aditus laríngeo) y la cara posterior de los cartílagos aritenoides y cricoides. Lateralmente a la laringe se forman dos canales depresivos profundos llamados <strong>recesos o senos piriformes</strong>, por donde se deslizan los líquidos.</li>
+                                <li><strong>Unión Faringoesofágica:</strong> Marcada por la porción cricofaríngea del músculo constrictor inferior, que actúa como el <em>esfínter esofágico superior</em>, manteniéndose contraído en reposo para evitar la insuflación gástrica durante la respiración.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl text-accent-400 font-bold mt-8 mb-4 border-b border-slate-700 pb-2">Sistema Muscular Faringeo en Detalle</h4>
+                    <p class="text-slate-300 mb-4">Los músculos de la faringe son estriados voluntarios, dispuestos en dos capas: una capa circular externa (constrictores) y una capa longitudinal interna (elevadores).</p>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="bg-slate-900 p-5 rounded border border-slate-700">
+                            <h6 class="font-bold text-white mb-3 text-lg border-l-4 border-accent-500 pl-3">Músculos Constrictores (Capa Externa)</h6>
+                            <p class="text-sm text-slate-400 mb-4">Se superponen de abajo hacia arriba como conos anidados o tejas de un techo. Se insertan posteriormente en el rafe faríngeo mediano. Su función es la contracción secuencial (peristaltismo faríngeo) para impulsar el bolo.</p>
+                            <ul class="text-sm text-slate-300 space-y-4">
+                                <li>
+                                    <strong class="text-accent-400 text-base">M. Constrictor Superior:</strong> Músculo cuadrilátero. 
+                                    <br><span class="text-slate-400">Inserciones anteriores:</span> Gancho de la apófisis pterigoides (porción pterigofaríngea), <em>rafe pterigomandibular</em> (porción bucofaríngea, donde se entrelaza con el músculo buccinador), línea milohioidea de la mandíbula (porción milofaríngea) y musculatura intrínseca de la lengua (porción glosofaríngea).
+                                </li>
+                                <li>
+                                    <strong class="text-accent-400 text-base">M. Constrictor Medio:</strong> Forma de abanico.
+                                    <br><span class="text-slate-400">Inserciones anteriores:</span> Cuerno menor del hueso hioides y ligamento estilohioideo (porción condrofaríngea), y cuerno mayor del hueso hioides (porción ceratofaríngea).
+                                </li>
+                                <li>
+                                    <strong class="text-accent-400 text-base">M. Constrictor Inferior:</strong> El más grueso y fuerte.
+                                    <br><span class="text-slate-400">Inserciones anteriores:</span> Línea oblicua del cartílago tiroides (porción tirofaríngea) y cara lateral del cartílago cricoides (porción cricofaríngea). 
+                                    <br><span class="text-red-400 mt-1 inline-block"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Punto Débil (Triángulo de Killian):</strong> Entre las fibras oblicuas de la porción tirofaríngea y las fibras transversales de la porción cricofaríngea existe una zona de debilidad en la pared posterior de la faringe. Aquí puede protruir la mucosa formando el <em>Divertículo de Zenker</em>.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 p-5 rounded border border-slate-700">
+                            <h6 class="font-bold text-white mb-3 text-lg border-l-4 border-accent-500 pl-3">Músculos Elevadores (Capa Interna)</h6>
+                            <p class="text-sm text-slate-400 mb-4">Músculos longitudinales que elevan la faringe y la laringe durante la deglución, acortando el trayecto que debe recorrer el bolo alimenticio.</p>
+                            <ul class="text-sm text-slate-300 space-y-4">
+                                <li>
+                                    <strong class="text-accent-400 text-base">M. Palatofaríngeo:</strong> Origen en la aponeurosis palatina (paladar blando) y paladar duro. Desciende formando el arco palatofaríngeo y se inserta en el borde posterior del cartílago tiroides y pared faríngea.
+                                </li>
+                                <li>
+                                    <strong class="text-accent-400 text-base">M. Salpingofaríngeo:</strong> Se origina en la porción cartilaginosa inferior de la trompa auditiva (tubo faringotimpánico). Desciende uniéndose al palatofaríngeo. Además de elevar la faringe, ayuda a abrir la trompa auditiva al deglutir.
+                                </li>
+                                <li>
+                                    <strong class="text-accent-400 text-base">M. Estilofaríngeo:</strong> Se origina en la cara medial de la apófisis estiloides del temporal. Desciende pasando <em>entre</em> el constrictor superior y el medio, y se inserta en el borde posterior del cartílago tiroides. 
+                                    <br><span class="text-accent-500 mt-1 inline-block"><i class="fa-solid fa-star"></i> <strong>Excepción Neuroanatómica:</strong> Mientras todos los demás músculos faríngeos son inervados por el plexo faríngeo (vía Vago X), el Estilofaríngeo es inervado exclusivamente por el nervio Glosofaríngeo (IX).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Laringe -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-8 shadow-xl">
+                <div class="bg-slate-850 px-6 py-5 border-b border-slate-700 flex items-center gap-3">
+                    <i class="fa-solid fa-head-side-cough text-accent-400 text-2xl"></i>
+                    <h3 class="text-2xl font-bold text-white">2. Anatomía Detallada de la Laringe</h3>
+                </div>
+                <div class="p-6 md:p-8 space-y-6">
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        La laringe es un complejo órgano musculo-ligamentoso y cartilaginoso, impar, mediano y simétrico. Su función filogenética primaria es actuar como esfínter para proteger el tracto respiratorio inferior (evitando la broncoaspiración). Secundariamente, es el órgano fonador humano y un regulador del flujo aéreo y la presión intratorácica (maniobra de Valsalva). Se extiende desde C3 hasta el borde inferior de C6, suspendida del hueso hioides por la membrana tirohioidea.
+                    </p>
+
+                    <h4 class="text-xl text-accent-400 font-bold mb-4 border-b border-slate-700 pb-2">Esqueleto Cartilaginoso Complejo</h4>
+                    <p class="text-slate-300 mb-4">Constituida por 9 piezas cartilaginosas (3 impares y 3 pares) unidas por articulaciones sinoviales, membranas elásticas extrínsecas e intrínsecas.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="font-bold text-white mb-3 text-lg border-b border-slate-700 pb-1">Cartílagos Impares (Mayores)</h5>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="bg-slate-900 p-4 rounded border border-slate-700">
+                                    <strong class="text-accent-400 text-lg block mb-1">Cartílago Tiroides (Hialino):</strong> 
+                                    El más grande. Consiste en dos láminas cuadriláteras que se fusionan en los dos tercios inferiores de su línea media anterior, formando un ángulo agudo (90° en hombres, 120° en mujeres) conocido como <em>prominencia laríngea (nuez de Adán)</em>. Superiormente a esta fusión presenta la incisura tiroidea superior. Su borde posterior se prolonga hacia arriba formando el asta (cuerno) superior y hacia abajo formando el asta inferior, la cual se articula con el cartílago cricoides (articulación cricotiroidea). En su cara lateral presenta la <em>línea oblicua</em>, sitio de inserción de los músculos esternotiroideo, tirohioideo y constrictor inferior de la faringe.
+                                </li>
+                                <li class="bg-slate-900 p-4 rounded border border-slate-700">
+                                    <strong class="text-accent-400 text-lg block mb-1">Cartílago Cricoides (Hialino):</strong> 
+                                    Tiene forma de anillo de sello. Es el <em>único anillo cartilaginoso circunferencialmente completo</em> de toda la vía aérea, lo que le da un rol vital en mantener la vía aérea permeable. Su porción anterior estrecha es el arco cricoideo, y su porción posterior ancha y alta es la lámina cricoidea. En el borde superior de la lámina se asientan los cartílagos aritenoides.
+                                </li>
+                                <li class="bg-slate-900 p-4 rounded border border-slate-700">
+                                    <strong class="text-accent-400 text-lg block mb-1">Epiglotis (Fibroelástico):</strong> 
+                                    Cartílago con forma de hoja de árbol o raqueta. Su extremo inferior afilado (peciolo) se une al ángulo entrante del cartílago tiroides mediante el ligamento tiroepiglótico, justo por encima de las cuerdas vocales. Su cara anterior libre mira hacia la base de la lengua. Durante la deglución, el ascenso de la laringe y la contracción de la musculatura provocan que la epiglotis bascule hacia atrás y abajo, cerrando como una tapa el <em>aditus laríngeo</em> (entrada de la laringe).
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white mb-3 text-lg border-b border-slate-700 pb-1">Cartílagos Pares</h5>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="bg-slate-900 p-4 rounded border border-slate-700">
+                                    <strong class="text-accent-400 text-lg block mb-1">Cartílagos Aritenoides (Hialino y Elástico):</strong> 
+                                    Fundamentales para la mecánica vocal. Tienen forma de pirámide de tres caras con la base apoyada sobre el borde superior de la lámina del cricoides (articulación cricoaritenoidea, que permite movimientos de deslizamiento y rotación). 
+                                    <br>Estructuras críticas de su base:
+                                    <ul class="list-disc ml-5 mt-2 space-y-1">
+                                        <li><strong>Apófisis Vocal (anterior):</strong> Compuesta de fibrocartílago elástico. Aquí se inserta posteriormente el ligamento vocal (esqueleto de la cuerda vocal verdadera).</li>
+                                        <li><strong>Apófisis Muscular (posterolateral):</strong> Inserción de los músculos cricoaritenoideos posterior (abductor) y lateral (aductor).</li>
+                                    </ul>
+                                </li>
+                                <li class="bg-slate-900 p-4 rounded border border-slate-700">
+                                    <strong class="text-accent-400 text-lg block mb-1">Corniculados (de Santorini) y Cuneiformes (de Wrisberg):</strong> 
+                                    Pequeños nódulos de fibrocartílago elástico. Los corniculados se asientan sobre los vértices de los aritenoides. Los cuneiformes no se articulan directamente, sino que están suspendidos en el tejido submucoso de los pliegues ariepiglóticos, otorgándoles rigidez y tensión para que no colapsen hacia la luz laríngea durante la inspiración.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="my-8 flex justify-center bg-slate-900 rounded-lg p-6 border border-slate-700">
+                        <span class="text-slate-500 italic"></span>
+                    </div>
+
+                    <h4 class="text-xl text-accent-400 font-bold mt-8 mb-4 border-b border-slate-700 pb-2">Membranas Fibroelásticas y Cavidad Laríngea (Endolaringe)</h4>
+                    <p class="text-slate-300 mb-4">Debajo de la mucosa, la laringe posee un tubo fibroelástico que soporta sus pliegues. Este se divide en una porción superior (Membrana Cuadrangular) y una inferior (Cono Elástico). El espacio interior se divide topográficamente en tres zonas:</p>
+                    
+                    <ul class="space-y-5 text-slate-300">
+                        <li class="bg-slate-850 p-5 rounded border border-slate-700/50">
+                            <strong class="text-white text-xl flex items-center gap-2 mb-2"><i class="fa-solid fa-arrow-turn-up text-accent-500"></i> Espacio Supraglótico (Vestíbulo Laríngeo)</strong>
+                            <p>Comprende desde el <strong>aditus laríngeo</strong> (limitado por la epiglotis, pliegues ariepiglóticos y escotadura interaritenoidea) hasta las cuerdas vocales falsas.</p>
+                            <p class="mt-2 text-sm">La pared lateral de este espacio está sostenida por la <strong>Membrana Cuadrangular</strong>. El borde inferior libre y engrosado de esta membrana forma el ligamento vestibular, que revestido de mucosa constituye el <strong>Pliegue Vestibular (Cuerda Vocal Falsa)</strong>. Estos pliegues son de color rosado, muy vascularizados, ricos en glándulas mucosas (para lubricar la laringe), no participan en la fonación normal, pero se cierran fuertemente como mecanismo esfinteriano de protección.</p>
+                        </li>
+                        
+                        <li class="bg-slate-850 p-5 rounded border border-slate-700/50">
+                            <strong class="text-white text-xl flex items-center gap-2 mb-2"><i class="fa-solid fa-arrows-left-right-to-line text-accent-500"></i> Espacio Glótico y Ventrículos</strong>
+                            <p>El espacio comprendido <em>exactamente entre</em> el pliegue vestibular (arriba) y el pliegue vocal verdadero (abajo) se evagina lateralmente formando el <strong>Ventrículo Laríngeo de Morgagni</strong>.</p>
+                            <p class="mt-2 text-sm">Los <strong>Pliegues Vocales (Cuerdas Vocales Verdaderas)</strong> marcan el límite glótico. Su esqueleto fibroso es el <em>ligamento vocal</em> (que es el borde superior libre y engrosado del <strong>Cono Elástico</strong> o membrana cricovocal). Lateralmente al ligamento se sitúa el músculo vocal. La mucosa aquí está firmemente adherida, es <em>epitelio plano estratificado</em>, y carece casi por completo de vasos sanguíneos y linfáticos, lo que le confiere un aspecto blanco nacarado característico.</p>
+                            <p class="mt-2 text-sm text-accent-400 bg-slate-900 p-2 rounded border border-slate-700"><i class="fa-solid fa-microscope"></i> <strong>Espacio de Reinke:</strong> Es el espacio subepitelial potencial de las cuerdas vocales verdaderas (tejido conectivo muy laxo). Es propenso a acumular líquido (Edema de Reinke) en fumadores crónicos, alterando severamente la voz.</p>
+                            <p class="mt-2 font-bold">La abertura entre ambas cuerdas vocales verdaderas es la <strong>Hendidura Glótica (Rima glottidis)</strong>, la parte más estrecha de la vía aérea en el adulto.</p>
+                        </li>
+                        
+                        <li class="bg-slate-850 p-5 rounded border border-slate-700/50">
+                            <strong class="text-white text-xl flex items-center gap-2 mb-2"><i class="fa-solid fa-arrow-turn-down text-accent-500"></i> Espacio Subglótico (Infraglótico)</strong>
+                            <p>Desde la cara inferior de las cuerdas vocales verdaderas hasta el borde inferior del cartílago cricoides. Su pared lateral está formada por el cono elástico y el arco cricoides. Se continúa sin transición con la tráquea.</p>
+                        </li>
+                    </ul>
+
+                    <h4 class="text-xl text-accent-400 font-bold mt-8 mb-4 border-b border-slate-700 pb-2">Músculos Intrínsecos de la Laringe</h4>
+                    <p class="text-slate-300 mb-4">Actúan coordinadamente sobre las articulaciones cricoaritenoidea y cricotiroidea. Se clasifican según su efecto sobre la hendidura glótica y la tensión de las cuerdas vocales.</p>
+                    
+                    <div class="bg-slate-900 rounded border border-slate-700 overflow-hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-700">
+                            <div class="p-5">
+                                <h6 class="font-bold text-accent-400 text-center mb-4 text-lg">TENSORES</h6>
+                                <p class="text-slate-300 text-sm mb-3"><strong class="text-white block mb-1">Músculo Cricotiroideo:</strong> Se origina en el arco cricoideo y se inserta en el borde inferior del tiroides. Su contracción bascula el cartílago tiroides hacia adelante y abajo, alejando el ángulo tiroideo de los aritenoides. Esto <em>elonga, tensa y adelgaza</em> las cuerdas vocales, elevando el tono de la voz.</p>
+                                <p class="text-xs text-red-400 font-bold bg-red-900/20 p-2 rounded"><i class="fa-solid fa-exclamation-circle"></i> Inervado por la rama externa del Nervio Laríngeo Superior.</p>
+                            </div>
+                            <div class="p-5">
+                                <h6 class="font-bold text-green-400 text-center mb-4 text-lg">ABDUCTORES (Abren)</h6>
+                                <p class="text-slate-300 text-sm mb-3"><strong class="text-white block mb-1">Músculo Cricoaritenoideo Posterior:</strong> Nace en la fosa posterior de la lámina del cricoides y se inserta en la apófisis muscular del aritenoides. Su contracción tracciona la apófisis muscular hacia atrás y medialmente, haciendo pivotar la apófisis vocal hacia <em>afuera</em>. Es el <strong>único músculo dilatador de la glotis</strong>, esencial para la respiración.</p>
+                            </div>
+                            <div class="p-5">
+                                <h6 class="font-bold text-yellow-400 text-center mb-4 text-lg">ADUCTORES (Cierran)</h6>
+                                <ul class="text-slate-300 text-sm space-y-3">
+                                    <li><strong class="text-white">Cricoaritenoideo Lateral:</strong> Rota las apófisis vocales hacia la línea media.</li>
+                                    <li><strong class="text-white">Aritenoideos (Transverso y Oblicuo):</strong> Unen ambos aritenoides, cerrando la porción cartilaginosa posterior de la glotis.</li>
+                                    <li><strong class="text-white">Tiroaritenoideo y Músculo Vocal:</strong> Su contracción acorta e incrementa el grosor de las cuerdas vocales (tonos graves).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Vascularización e Inervación -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-8 shadow-xl">
+                <div class="bg-slate-850 px-6 py-5 border-b border-slate-700 flex items-center gap-3">
+                    <i class="fa-solid fa-network-wired text-accent-400 text-2xl"></i>
+                    <h3 class="text-2xl font-bold text-white">3. Vascularización, Inervación y Drenaje</h3>
+                </div>
+                <div class="p-6 md:p-8 space-y-8">
+                    
+                    <div>
+                        <h4 class="text-xl text-accent-400 font-bold mb-3 border-b border-slate-700 pb-2">Irrigación Arterial Compleja</h4>
+                        <ul class="list-disc list-outside ml-6 space-y-4 text-slate-300">
+                            <li><strong class="text-white">Irrigación Faríngea:</strong> Deriva extensamente de ramas de la arteria carótida externa. La principal es la <em>Arteria Faríngea Ascendente</em>. Recibe ramas accesorias de la arteria palatina ascendente y tonsilar (ramas de la facial), ramas faríngeas de la arteria maxilar interna, y ramas de la lingual y tiroidea superior.</li>
+                            <li><strong class="text-white">Pedículo Laríngeo Superior:</strong> Arteria laríngea superior (rama descendente de la arteria tiroidea superior, 1ra rama carótida externa). Penetra la membrana tirohioidea junto con el nervio homónimo irrigando la supraglotis.</li>
+                            <li><strong class="text-white">Pedículo Laríngeo Inferior:</strong> Arteria laríngea inferior (rama de la arteria tiroidea inferior, proveniente del tronco tirocervical de la subclavia). Asciende con el nervio recurrente irrigando la infraglotis.</li>
+                            <li><strong class="text-white">Pedículo Cricoideo (Medio):</strong> Arteria laríngea media (rama cricotiroidea de la tiroidea superior), perfora la membrana cricotiroidea.</li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-blue-900/20 p-5 rounded-lg border border-blue-800">
+                            <h4 class="font-bold text-blue-400 mb-3 flex items-center gap-2 text-xl"><i class="fa-solid fa-bolt"></i> Inervación Neuromotora (Vago X)</h4>
+                            <p class="text-slate-300 text-sm mb-4">Todo el control motor y sensitivo primario proviene del par craneal X, con asistencia del plexo faríngeo y simpático cervical.</p>
+                            <div class="space-y-5">
+                                <div>
+                                    <strong class="text-white text-lg">Nervio Laríngeo Superior:</strong> Se divide a nivel del asta mayor del hioides.
+                                    <ul class="list-disc list-outside ml-5 mt-2 text-sm text-slate-400 space-y-2">
+                                        <li><em>Rama Interna:</em> Perfora la membrana tirohioidea. Es <strong>puramente sensitiva</strong>, proporcionando inervación a la mucosa de la valécula, epiglotis y toda la laringe por encima de las cuerdas vocales (inicia el reflejo de la tos).</li>
+                                        <li><em>Rama Externa:</em> Desciende por la cara externa del constrictor inferior. Es <strong>motora</strong> para un solo músculo de la laringe: el <em>cricotiroideo</em>.</li>
+                                    </ul>
+                                </div>
+                                <div class="border-t border-blue-800/50 pt-4">
+                                    <strong class="text-white text-lg">Nervio Laríngeo Recurrente (Inferior):</strong> Trayecto asimétrico. El derecho nace abrazando la arteria subclavia derecha; el izquierdo nace en el tórax abrazando el cayado aórtico. Ambos ascienden por el surco traqueoesofágico.
+                                    <ul class="list-disc list-outside ml-5 mt-2 text-sm text-slate-400 space-y-2">
+                                        <li>Es <strong>motor</strong> para absolutamente <em>todos</em> los músculos intrínsecos de la laringe (excepto el cricotiroideo).</li>
+                                        <li>Proporciona inervación <strong>sensitiva</strong> a la mucosa infraglótica.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-900/20 p-5 rounded-lg border border-emerald-800">
+                            <h4 class="font-bold text-emerald-400 mb-3 flex items-center gap-2 text-xl"><i class="fa-solid fa-shield-virus"></i> Sistema Linfático Diferenciado</h4>
+                            <p class="text-slate-300 text-sm mb-4">El drenaje linfático de la laringe está tajantemente separado en dos territorios por las cuerdas vocales verdaderas, las cuales actúan como barrera debido a su carencia casi total de capilares linfáticos (por ende, el cáncer de glotis puro raramente hace metástasis ganglionares tempranas).</p>
+                            <ul class="list-disc list-outside ml-5 space-y-4 text-sm text-slate-300">
+                                <li><strong class="text-white block mb-1">Red Supraglótica:</strong> Extremadamente rica y densa. Los vasos cruzan la membrana tirohioidea con el paquete vasculonervioso y drenan masivamente en los <em>ganglios cervicales profundos superiores y medios</em> (Niveles II y III de la cadena yugular interna).</li>
+                                <li><strong class="text-white block mb-1">Red Infraglótica:</strong> Drena a través de la membrana cricotiroidea hacia los ganglios prelaríngeos (ganglio délfico), pretraqueales y paratraqueales, y finalmente a la cadena yugular profunda inferior (Niveles IV y VI).</li>
+                                <li><strong class="text-white block mb-1">Anillo Linfático de Waldeyer:</strong> Anillo faríngeo de tejido linfoide asociado a mucosas (MALT). Formado por la amígdala faríngea (adenoides, superior), amígdalas tubáricas (laterosuperior), amígdalas palatinas (laterales, fosa tonsilar) y amígdala lingual (inferior, base de lengua). Representa la principal barrera inmunológica del tracto aerodigestivo superior.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Correlación Clínica CMF -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-xl">
+                <div class="bg-red-900/30 px-6 py-5 border-b border-red-800/50 flex items-center gap-3">
+                    <i class="fa-solid fa-user-doctor text-red-400 text-2xl"></i>
+                    <h3 class="text-2xl font-bold text-white">4. Correlación Quirúrgica Bucomaxilofacial Avanzada</h3>
+                </div>
+                <div class="p-6 md:p-8 space-y-6 text-slate-300">
+                    <p class="text-lg mb-4">El dominio milimétrico de la anatomía faringolaríngea y los espacios fasciales del cuello es imperativo para el cirujano bucomaxilofacial, especialmente en el manejo de vías aéreas complejas, traumatismos maxilofaciales severos, propagación de infecciones odontogénicas y patología obstructiva.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-900 p-5 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-scalpel-line-dashed text-red-400 mb-3 text-2xl"></i>
+                            <strong class="text-white text-lg block mb-2">Vía Aérea Quirúrgica: Cricotirotomía</strong>
+                            <p class="text-sm">En escenarios de trauma facial severo (ej. fractura Le Fort III + fractura mandibular conmituta) o edema angioneurótico masivo donde la intubación endotraqueal es imposible ("No intubable, no ventilable"), la vía de acceso de emergencia de elección es la <strong>Cricotirotomía</strong>. Consiste en una incisión transversal a través de la <em>membrana cricotiroidea</em>. Se prefiere sobre la traqueostomía de urgencia porque esta membrana es superficial, fácilmente palpable (depresión entre los cartílagos tiroides y cricoides) y relativamente avascular en la línea media estricta, evadiendo el istmo tiroideo.</p>
+                        </div>
+                        
+                        <div class="bg-slate-900 p-5 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-bed-pulse text-red-400 mb-3 text-2xl"></i>
+                            <strong class="text-white text-lg block mb-2">Iatrogenia de los Nervios Laríngeos</strong>
+                            <p class="text-sm">En cirugías de cuello, tiroides o acceso cervical para resecciones tumorales maxilofaciales masivas. La lesión de la <em>rama externa del laríngeo superior</em> produce voz monótona (falla el tensor cricotiroideo). La lesión <em>unilateral del laríngeo recurrente</em> resulta en ronquera severa y voz bitonal. Una <strong>lesión bilateral del recurrente</strong> es una emergencia catastrófica postquirúrgica: ambos pliegues vocales quedan aducidos permanentemente en posición paramediana, causando una aguda e inmediata <strong>obstrucción respiratoria asfixiante</strong>, requiriendo reintubación o traqueostomía.</p>
+                        </div>
+
+                        <div class="bg-slate-900 p-5 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-bacteria text-red-400 mb-3 text-2xl"></i>
+                            <strong class="text-white text-lg block mb-2">Diseminación de Infecciones Odontogénicas</strong>
+                            <p class="text-sm">Infecciones agresivas originadas en los molares inferiores pueden penetrar los espacios aponeuróticos cervicales. Un absceso submandibular puede diseminarse al <em>espacio parafaríngeo</em> (lateral a la faringe), empujando la pared faríngea medialmente y la amígdala, produciendo odinofagia severa y trismo. Desde allí, la infección puede alcanzar el <strong>espacio retrofaríngeo (Danger Space)</strong>, que se comunica directamente con el mediastino posterior, provocando una mediastinitis necrosante descendente con alta tasa de mortalidad.</p>
+                        </div>
+
+                        <div class="bg-slate-900 p-5 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-lungs-virus text-red-400 mb-3 text-2xl"></i>
+                            <strong class="text-white text-lg block mb-2">Cirugía CMF y SAHOS</strong>
+                            <p class="text-sm">El <em>Síndrome de Apnea Hipopnea Obstructiva del Sueño (SAHOS)</em> tiene base anatómica en el colapso del espacio orofaríngeo durante el sueño (por hipotonía muscular). Cirujanos CMF realizan cirugías ortognáticas como el <strong>Avance Maxilomandibular (MMA)</strong>. Esta intervención avanza las bases óseas maxilares, lo que mediante las inserciones musculares (geniogloso a la mandíbula, velo del paladar al maxilar), <em>tracciona anteriormente</em> los tejidos blandos faríngeos, ampliando significativamente la luz de la orofaringe e hipofaringe y previniendo su colapso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= SECCIÓN: AUTOEVALUACIÓN (QUIZ) ================= -->
+        <section id="evaluacion" class="tab-content max-w-3xl mx-auto pb-12">
+            
+            <div id="quiz-intro" class="bg-slate-800 rounded-xl border border-slate-700 p-8 text-center shadow-lg">
+                <div class="w-20 h-20 bg-accent-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-brain text-4xl text-accent-500"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-4">Autoevaluación: Faringe y Laringe</h2>
+                <p class="text-slate-400 mb-8 max-w-md mx-auto">Pon a prueba tus conocimientos anatómicos con esta ráfaga de 15 preguntas clínicas y estructurales basadas en la clase teórica.</p>
+                <button onclick="startQuiz()" class="bg-accent-600 hover:bg-accent-500 text-white px-8 py-3 rounded-lg font-bold transition-colors shadow-lg shadow-accent-600/30">
+                    Iniciar Evaluación
+                </button>
+            </div>
+
+            <div id="quiz-container" class="hidden bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-lg">
+                <div class="bg-slate-850 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
+                    <span id="quiz-progress" class="text-accent-400 font-semibold text-sm tracking-wider uppercase">Pregunta 1 de 15</span>
+                    <span class="text-slate-400 text-sm"><i class="fa-regular fa-star text-yellow-500"></i> <span id="quiz-score">0</span> pts</span>
+                </div>
+                
+                <div class="p-6 md:p-8">
+                    <h3 id="question-text" class="text-xl md:text-2xl font-medium text-white mb-8 leading-snug"></h3>
+                    
+                    <div id="options-container" class="space-y-3">
+                        <!-- Opciones generadas por JS -->
+                    </div>
+                </div>
+
+                <div class="bg-slate-850 px-6 py-4 border-t border-slate-700 flex justify-end">
+                    <button id="btn-next" onclick="nextQuestion()" class="hidden bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                        Siguiente Pregunta <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="quiz-results" class="hidden bg-slate-800 rounded-xl border border-slate-700 p-8 text-center shadow-lg">
+                <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-green-500/30">
+                    <i class="fa-solid fa-trophy text-5xl text-green-400"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-2">¡Evaluación Completada!</h2>
+                <p class="text-slate-400 mb-6">Has finalizado el módulo de Faringe y Laringe.</p>
+                
+                <div class="bg-slate-900 inline-block px-8 py-4 rounded-xl border border-slate-700 mb-8">
+                    <p class="text-sm text-slate-400 uppercase tracking-wider mb-1">Tu Puntuación</p>
+                    <p class="text-5xl font-bold text-accent-400"><span id="final-score">0</span> <span class="text-2xl text-slate-500">/ 15</span></p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="resetQuiz()" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Reintentar
+                    </button>
+                    <button id="btn-save-score" onclick="saveScoreToDB()" class="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg shadow-green-600/30">
+                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Guardar Resultado
+                    </button>
+                </div>
+                <p id="save-status" class="mt-4 text-sm hidden"></p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- App Logic & Firebase Integration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        window.switchTab = function(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            document.getElementById('btn-teoria').className = 'w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-700 hover:text-white transition-colors text-left font-medium';
+            document.getElementById('btn-evaluacion').className = 'w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-700 hover:text-white transition-colors text-left font-medium';
+            
+            if (tabId === 'teoria') {
+                document.getElementById('btn-teoria').className = 'w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-accent-600 text-white transition-colors text-left font-medium shadow-md shadow-accent-600/20';
+            } else if (tabId === 'evaluacion') {
+                document.getElementById('btn-evaluacion').className = 'w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-accent-600 text-white transition-colors text-left font-medium shadow-md shadow-accent-600/20';
+            }
+        };
+
+        const questions = [
+            {
+                q: "Me extiendo desde el paladar blando hasta el borde superior de la epiglotis. ¿Quién soy?",
+                options: ["Orofaringe", "Nasofaringe", "Laringofaringe", "Tráquea"],
+                a: 0
+            },
+            {
+                q: "Soy el único músculo abductor de las cuerdas vocales:",
+                options: ["Músculo cricotiroideo", "Músculo tiroaritenoideo", "Músculo cricoaritenoideo posterior", "Músculo vocal"],
+                a: 2
+            },
+            {
+                q: "Recojo linfa de la región supraglótica:",
+                options: ["Ganglios submandibulares", "Ganglios cervicales profundos", "Ganglios preauriculares", "Ganglios supraclaviculares"],
+                a: 1
+            },
+            {
+                q: "Cierro el aditus laríngeo durante la deglución:",
+                options: ["Cartílago tiroides", "Cartílago cricoides", "Glotis", "Epiglotis"],
+                a: 3
+            },
+            {
+                q: "Contengo las cuerdas vocales verdaderas:",
+                options: ["Glotis", "Ventrículo laríngeo", "Receso piriforme", "Nasofaringe"],
+                a: 0
+            },
+            {
+                q: "Paciente con disfonía y antecedentes de cirugía tiroidea. ¿Qué nervio pudo lesionarse?",
+                options: ["Nervio laríngeo superior", "Nervio glosofaríngeo", "Nervio laríngeo recurrente", "Nervio hipogloso"],
+                a: 2
+            },
+            {
+                q: "Niño con cuerpo extraño al tragar, dolor localizado y tos. ¿Dónde se pudo alojar típicamente?",
+                options: ["Nasofaringe", "Receso piriforme", "Ventrículo laríngeo", "Glotis"],
+                a: 1
+            },
+            {
+                q: "Ante una parálisis bilateral de cuerdas vocales por daño recurrencial, ¿Cuál es la complicación inmediata?",
+                options: ["Disfagia severa", "Hemorragia vocal", "Pérdida de sensibilidad térmica", "Obstrucción respiratoria"],
+                a: 3
+            },
+            {
+                q: "¿Cuál es el cartílago más grande de la laringe que forma la prominencia laríngea?",
+                options: ["Cartílago tiroides", "Cartílago cricoides", "Cartílago aritenoides", "Cartílago corniculado"],
+                a: 0
+            },
+            {
+                q: "¿Qué epitelio recubre la nasofaringe?",
+                options: ["Epitelio cúbico simple", "Epitelio plano estratificado no queratinizado", "Epitelio cilíndrico ciliado pseudoestratificado", "Epitelio cilíndrico simple"],
+                a: 2
+            },
+            {
+                q: "¿Qué músculo eleva la faringe y es inervado por el nervio glosofaríngeo?",
+                options: ["Músculo palatofaríngeo", "Músculo constrictor superior", "Músculo cricotiroideo", "Músculo estilofaríngeo"],
+                a: 3
+            },
+            {
+                q: "¿Qué arteria irriga la mucosa supraglótica de la laringe?",
+                options: ["Arteria laríngea superior", "Arteria tiroidea inferior", "Arteria facial", "Arteria maxilar interna"],
+                a: 0
+            },
+            {
+                q: "¿Qué estructura anatómica está exactamente entre los pliegues vestibulares (falsos) y vocales (verdaderos)?",
+                options: ["Ventrículo laríngeo de Morgagni", "Hendidura Glótica", "Aditus laríngeo", "Receso piriforme"],
+                a: 0
+            },
+            {
+                q: "¿Qué músculo bascula el cartílago tiroides para tensar las cuerdas vocales?",
+                options: ["Músculo cricoaritenoideo posterior", "Músculo tiroaritenoideo", "Músculo cricotiroideo", "Músculo ariepiglótico"],
+                a: 2
+            },
+            {
+                q: "¿Qué nervio craneal tiene una rama externa motora (para el cricotiroideo) y una rama interna sensitiva?",
+                options: ["Nervio laríngeo recurrente", "Nervio laríngeo superior", "Nervio glosofaríngeo", "Tronco principal del Nervio Vago"],
+                a: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        window.startQuiz = function() {
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            currentQuestion = 0;
+            score = 0;
+            updateUI();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            document.getElementById('btn-next').classList.add('hidden');
+            document.getElementById('quiz-progress').textContent = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
+            
+            const qData = questions[currentQuestion];
+            document.getElementById('question-text').textContent = qData.q;
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            
+            qData.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option w-full text-left px-5 py-4 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 font-medium transition-all duration-200 focus:outline-none';
+                btn.innerHTML = `<span class="inline-block w-8 text-accent-500 font-bold">${String.fromCharCode(65 + index)}.</span> ${opt}`;
+                btn.onclick = () => selectOption(index, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        window.selectOption = function(selectedIndex, btnElement) {
+            if (answered) return;
+            answered = true;
+            
+            const qData = questions[currentQuestion];
+            const buttons = document.getElementById('options-container').children;
+            
+            for(let btn of buttons) {
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+            }
+            
+            if (selectedIndex === qData.a) {
+                btnElement.classList.remove('bg-slate-900', 'border-slate-700', 'opacity-70');
+                btnElement.classList.add('correct', 'text-white');
+                score++;
+                updateUI();
+            } else {
+                btnElement.classList.remove('bg-slate-900', 'border-slate-700');
+                btnElement.classList.add('incorrect', 'text-white');
+                buttons[qData.a].classList.remove('bg-slate-900', 'border-slate-700', 'opacity-70');
+                buttons[qData.a].classList.add('correct', 'text-white');
+            }
+            
+            document.getElementById('btn-next').classList.remove('hidden');
+        }
+
+        window.nextQuestion = function() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            document.getElementById('final-score').textContent = score;
+            
+            document.getElementById('save-status').classList.add('hidden');
+            document.getElementById('btn-save-score').disabled = false;
+            document.getElementById('btn-save-score').classList.remove('opacity-50');
+        }
+
+        window.resetQuiz = function() {
+            startQuiz();
+        }
+
+        function updateUI() {
+            document.getElementById('quiz-score').textContent = score;
+        }
+
+        const firebaseConfigStr = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
+        const firebaseConfig = JSON.parse(firebaseConfigStr);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        let app, auth, db, currentUser = null;
+
+        if (Object.keys(firebaseConfig).length > 0) {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (error) {
+                    console.error("Auth initialization failed:", error);
+                    document.getElementById('auth-status').textContent = 'Error Auth';
+                    document.getElementById('auth-status').classList.replace('text-yellow-400', 'text-red-400');
+                }
+            };
+            
+            initAuth();
+
+            onAuthStateChanged(auth, (user) => {
+                currentUser = user;
+                if (user) {
+                    document.getElementById('auth-status').textContent = 'Conectado (DB Lista)';
+                    document.getElementById('auth-status').classList.replace('text-yellow-400', 'text-green-400');
+                } else {
+                    document.getElementById('auth-status').textContent = 'Desconectado';
+                    document.getElementById('auth-status').classList.replace('text-green-400', 'text-red-400');
+                }
+            });
+        }
+
+        window.saveScoreToDB = async function() {
+            const statusEl = document.getElementById('save-status');
+            const btnSave = document.getElementById('btn-save-score');
+            
+            statusEl.classList.remove('hidden', 'text-red-400', 'text-green-400');
+            
+            if (!currentUser || !db) {
+                statusEl.textContent = 'Error: Base de datos no conectada.';
+                statusEl.classList.add('text-red-400');
+                return;
+            }
+
+            btnSave.disabled = true;
+            btnSave.classList.add('opacity-50');
+            statusEl.textContent = 'Guardando...';
+            statusEl.classList.add('text-slate-400');
+
+            try {
+                const scoresRef = collection(db, 'artifacts', appId, 'users', currentUser.uid, 'evaluaciones');
+                await addDoc(scoresRef, {
+                    puntaje: score,
+                    total: questions.length,
+                    fecha: serverTimestamp(),
+                    modulo: "Faringe y Laringe Avanzada",
+                    tipo: "Autoevaluación"
+                });
+                
+                statusEl.textContent = '¡Resultado guardado exitosamente en tu perfil!';
+                statusEl.classList.replace('text-slate-400', 'text-green-400');
+            } catch (error) {
+                console.error("Error al guardar:", error);
+                statusEl.textContent = 'Error al guardar el resultado. Intenta nuevamente.';
+                statusEl.classList.replace('text-slate-400', 'text-red-400');
+                btnSave.disabled = false;
+                btnSave.classList.remove('opacity-50');
+            }
+        };
+    </script>
+</body>
+</html>
